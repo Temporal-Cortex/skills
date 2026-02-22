@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: MCP Server Issues
+    url: https://github.com/billylui/temporal-cortex-mcp/issues
+    about: For bugs or feature requests related to the MCP server (tool execution, calendar providers, auth flows).
+  - name: Core Library Issues (Truth Engine, TOON)
+    url: https://github.com/billylui/temporal-cortex-core/issues
+    about: For bugs or feature requests related to the open-source computation libraries.

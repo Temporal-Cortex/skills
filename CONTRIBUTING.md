@@ -1,13 +1,36 @@
-# Contributing
+# Contributing to Temporal Cortex Skill
 
 Thank you for your interest in contributing to the Temporal Cortex Agent Skill.
 
+## About This Repo
+
+This is a **documentation and configuration** repository. It contains the `calendar-scheduling` Agent Skill — SKILL.md, reference documents, presets, and scripts. The MCP server source code is maintained separately in [temporal-cortex-mcp](https://github.com/billylui/temporal-cortex-mcp).
+
+## Getting Started
+
+1. Fork the repository
+2. Clone your fork locally
+3. Create a branch for your changes: `git checkout -b docs/your-change`
+4. Make your changes following the guidelines below
+5. Push to your fork and submit a pull request
+
 ## How to Contribute
 
-1. **Bug reports** — Open an [issue](https://github.com/billylui/temporal-cortex-skill/issues) with a clear description
-2. **Skill improvements** — Submit a pull request with changes to SKILL.md or reference documents
-3. **New presets** — Add preset JSON files to `calendar-scheduling/assets/presets/`
-4. **Script improvements** — Update scripts in `calendar-scheduling/scripts/`
+### Bug Reports
+
+Found a bug in the skill? Search [existing issues](https://github.com/billylui/temporal-cortex-skill/issues) first. If not found, [open a new issue](https://github.com/billylui/temporal-cortex-skill/issues/new?template=bug_report.yml).
+
+For MCP server bugs, report at [temporal-cortex-mcp](https://github.com/billylui/temporal-cortex-mcp/issues).
+
+### Feature Requests
+
+Have an idea? [Open an issue](https://github.com/billylui/temporal-cortex-skill/issues/new?template=feature_request.yml) describing your use case.
+
+### Skill Improvements
+
+- Changes to SKILL.md or reference documents
+- New presets in `calendar-scheduling/assets/presets/`
+- Script improvements in `calendar-scheduling/scripts/`
 
 ## Guidelines
 
@@ -23,6 +46,15 @@ bash tests/validate-skill.sh
 bash tests/validate-structure.sh
 ```
 
+## Commit Messages
+
+Use clear, descriptive commit messages with conventional prefixes:
+
+- `docs: improve RRULE edge case examples`
+- `fix: correct broken link in TOOL-REFERENCE.md`
+- `feat: add healthcare-scheduler preset`
+- `chore: update CI workflow action versions`
+
 ## Agent Skills Specification
 
 This skill follows the [Agent Skills specification](https://agentskills.io/specification). Key constraints:
@@ -33,4 +65,8 @@ This skill follows the [Agent Skills specification](https://agentskills.io/speci
 
 ## Code of Conduct
 
-This project follows the [Code of Conduct](CODE_OF_CONDUCT.md).
+This project follows the [Contributor Covenant v2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the MIT license terms of this project.

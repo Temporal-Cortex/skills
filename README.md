@@ -117,6 +117,10 @@ See [TOOL-REFERENCE.md](calendar-scheduling/references/TOOL-REFERENCE.md) for co
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Security
+
+See [SECURITY.md](SECURITY.md).
+
 ## License
 
 [MIT](LICENSE)

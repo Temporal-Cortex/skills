@@ -1,11 +1,9 @@
 # Code of Conduct
 
-This project follows the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct (version 2.1).
+This project follows the [Contributor Covenant v2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 
-We are committed to making participation in this project a harassment-free experience for everyone. Please be respectful and constructive in all interactions.
-
-For the full text, see https://www.contributor-covenant.org/version/2/1/code_of_conduct/
+Please read the full text at the link above. By participating in this project, you agree to abide by its terms.
 
 ## Reporting
 
-Report issues to the project maintainers via [GitHub Issues](https://github.com/billylui/temporal-cortex-skill/issues).
+If you experience or witness unacceptable behavior, please report it by [opening a GitHub issue](https://github.com/billylui/temporal-cortex-skill/issues/new?labels=conduct&title=Code+of+Conduct+Report) with the "conduct" label. If you prefer to report privately, use [GitHub's private contact form](https://github.com/billylui/temporal-cortex-skill/security/advisories/new). All reports will be reviewed and investigated promptly and fairly.
