@@ -32,7 +32,7 @@ if [[ -f "$CREDS_FILE" ]]; then
 
   # List configured providers
   if command -v python3 &>/dev/null; then
-    PROVIDERS=$(python3 -c "
+    python3 -c "
 import json
 creds = json.load(open('${CREDS_FILE}'))
 providers = set()
@@ -46,7 +46,7 @@ for key in creds:
 for p in sorted(providers):
     if p not in ('access', 'refresh', 'token', 'client', 'expiry'):
         print(f'  Provider: {p}')
-" 2>/dev/null || echo "  (unable to parse credentials)")
+" 2>/dev/null || echo "  (unable to parse credentials)"
   fi
 else
   echo "  Credentials file: NOT FOUND"
