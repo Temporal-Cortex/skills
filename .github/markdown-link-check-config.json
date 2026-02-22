@@ -8,6 +8,12 @@
     },
     {
       "pattern": "^https://tally\\.so"
+    },
+    {
+      "pattern": "^https://github\\.com/billylui/temporal-cortex-skill/compare/"
+    },
+    {
+      "pattern": "^https://github\\.com/billylui/temporal-cortex-skill/releases/tag/"
     }
   ],
   "replacementPatterns": [],
