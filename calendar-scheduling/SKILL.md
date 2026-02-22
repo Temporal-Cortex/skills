@@ -7,7 +7,7 @@ compatibility: |-
   Requires npx (Node.js 18+) or Docker for the MCP server. Works with Claude Code, Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
 metadata:
   author: billylui
-  version: "0.3.1"
+  version: "0.3.2"
   mcp-server: "@temporal-cortex/cortex-mcp"
 ---
 
