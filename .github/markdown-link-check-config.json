@@ -1,0 +1,19 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://mcp\\.temporal-cortex\\.com"
+    },
+    {
+      "pattern": "^https://app\\.temporal-cortex\\.com"
+    },
+    {
+      "pattern": "^https://tally\\.so"
+    }
+  ],
+  "replacementPatterns": [],
+  "httpHeaders": [],
+  "timeout": "10s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "10s"
+}
