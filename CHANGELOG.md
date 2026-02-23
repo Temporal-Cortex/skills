@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.6] - 2026-02-23
+
+### Security
+- Added `metadata.openclaw` block with structured `requires.bins`, `requires.env`, `requires.config`, and `primaryEnv` fields for ClawHub/OpenClaw scanner compatibility ([clawhub#340](https://github.com/openclaw/clawhub/issues/340))
+- Annotated `REDIS_URLS` and `LOCK_TTL_SECS` as platform-mode only in BOOKING-SAFETY reference doc
+
+### Changed
+- Added 7 OpenClaw registry metadata assertions to `test-security.sh` (29 total)
+
 ## [0.3.5] - 2026-02-23
 
 ### Security
@@ -67,7 +76,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - .mcp.json for local MCP server connection
 - CI pipeline: SKILL.md validation, ShellCheck, JSON validation, link check
 
-[Unreleased]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.5...HEAD
+[Unreleased]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.6...HEAD
+[0.3.6]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.5...v0.3.6
 [0.3.5]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.4...v0.3.5
 [0.3.4]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.3...v0.3.4
 [0.3.3]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.2...v0.3.3

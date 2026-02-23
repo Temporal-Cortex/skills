@@ -136,6 +136,61 @@ for var in GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET MICROSOFT_CLIENT_ID MICROSOFT_C
 done
 
 # ---------------------------------------------------------------------------
+# 5. OpenClaw registry metadata — metadata.openclaw block must be present
+# ---------------------------------------------------------------------------
+echo ""
+echo "--- OpenClaw Registry Metadata ---"
+
+SKILL_FILE="${SKILL_DIR}/SKILL.md"
+
+# Extract frontmatter (between first and second ---)
+FRONTMATTER=$(sed -n '/^---$/,/^---$/p' "$SKILL_FILE" | sed '1d;$d')
+
+# Check metadata.openclaw block exists
+if echo "$FRONTMATTER" | grep -q '^\s*openclaw:'; then
+  pass "SKILL.md: metadata.openclaw block present"
+else
+  fail "SKILL.md: metadata.openclaw block missing"
+fi
+
+# Check requires sub-block with bins, env, config
+if echo "$FRONTMATTER" | grep -qE '^\s+bins:'; then
+  pass "SKILL.md: openclaw.requires.bins declared"
+else
+  fail "SKILL.md: openclaw.requires.bins missing"
+fi
+
+if echo "$FRONTMATTER" | grep -qF -- '- npx'; then
+  pass "SKILL.md: openclaw.requires.bins includes npx"
+else
+  fail "SKILL.md: openclaw.requires.bins missing npx"
+fi
+
+if echo "$FRONTMATTER" | grep -qF -- '- GOOGLE_CLIENT_ID'; then
+  pass "SKILL.md: openclaw.requires.env includes GOOGLE_CLIENT_ID"
+else
+  fail "SKILL.md: openclaw.requires.env missing GOOGLE_CLIENT_ID"
+fi
+
+if echo "$FRONTMATTER" | grep -qF -- '- MICROSOFT_CLIENT_ID'; then
+  pass "SKILL.md: openclaw.requires.env includes MICROSOFT_CLIENT_ID"
+else
+  fail "SKILL.md: openclaw.requires.env missing MICROSOFT_CLIENT_ID"
+fi
+
+if echo "$FRONTMATTER" | grep -q 'credentials.json'; then
+  pass "SKILL.md: openclaw.requires.config includes credentials.json path"
+else
+  fail "SKILL.md: openclaw.requires.config missing credentials.json path"
+fi
+
+if echo "$FRONTMATTER" | grep -q 'primaryEnv:'; then
+  pass "SKILL.md: openclaw.primaryEnv declared"
+else
+  fail "SKILL.md: openclaw.primaryEnv missing"
+fi
+
+# ---------------------------------------------------------------------------
 # Summary
 # ---------------------------------------------------------------------------
 echo ""
