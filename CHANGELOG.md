@@ -7,8 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-02-24
+
+### Security
+- Removed `primaryEnv: TIMEZONE` — scanner misinterprets TIMEZONE as a credential env var, but it is a user preference (auto-detected from OS)
+- Removed `openclaw.requires.env` block — TIMEZONE and WEEK_START are optional overrides with auto-detection, not required env vars
+- Moved TIMEZONE and WEEK_START from `env` to `optional_env` in `metadata.requires` JSON for backward-compat scanners
+- Added `metadata.homepage` and `metadata.repository` for publisher provenance verification
+
 ### Changed
 - **ci**: Added Dependabot auto-merge workflow — auto-approves and merges patch updates after CI passes
+- Updated `test-security.sh` OpenClaw assertions to validate absence of `env` block and `primaryEnv`, validate presence of `homepage` and `repository`
 
 ## [0.4.1] - 2026-02-23
 
@@ -96,7 +105,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - .mcp.json for local MCP server connection
 - CI pipeline: SKILL.md validation, ShellCheck, JSON validation, link check
 
-[Unreleased]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.2...HEAD
+[0.4.2]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.6...v0.4.0
 [0.3.6]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.5...v0.3.6

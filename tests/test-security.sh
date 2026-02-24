@@ -162,7 +162,7 @@ else
   fail "SKILL.md: metadata.openclaw block missing"
 fi
 
-# Check requires sub-block with bins, env, config
+# Check requires sub-block with bins
 if echo "$FRONTMATTER" | grep -qE '^\s+bins:'; then
   pass "SKILL.md: openclaw.requires.bins declared"
 else
@@ -175,25 +175,27 @@ else
   fail "SKILL.md: openclaw.requires.bins missing npx"
 fi
 
-if echo "$FRONTMATTER" | grep -qF -- '- TIMEZONE'; then
-  pass "SKILL.md: openclaw.requires.env includes TIMEZONE"
+# openclaw.requires.env should NOT exist (TIMEZONE/WEEK_START are optional, auto-detected)
+OPENCLAW_SECTION=$(echo "$FRONTMATTER" | sed -n '/openclaw:/,/^[^ ]/p')
+if echo "$OPENCLAW_SECTION" | grep -qE '^\s+env:'; then
+  fail "SKILL.md: openclaw.requires.env should not exist (vars are optional)"
 else
-  fail "SKILL.md: openclaw.requires.env missing TIMEZONE"
+  pass "SKILL.md: openclaw.requires.env correctly absent"
 fi
 
-if echo "$FRONTMATTER" | grep -qF -- '- WEEK_START'; then
-  pass "SKILL.md: openclaw.requires.env includes WEEK_START"
+# primaryEnv should NOT exist (no primary credential env var)
+if echo "$FRONTMATTER" | grep -q 'primaryEnv:'; then
+  fail "SKILL.md: primaryEnv should not exist (not a credential)"
 else
-  fail "SKILL.md: openclaw.requires.env missing WEEK_START"
+  pass "SKILL.md: primaryEnv correctly absent"
 fi
 
-# OAuth vars should NOT be in openclaw.requires.env (they are optional)
-OPENCLAW_SECTION=$(echo "$FRONTMATTER" | sed -n '/openclaw:/,/primaryEnv:/p')
+# OAuth vars should NOT appear anywhere in openclaw block
 for var in GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET MICROSOFT_CLIENT_ID MICROSOFT_CLIENT_SECRET; do
   if echo "$OPENCLAW_SECTION" | grep -qF -- "- ${var}"; then
-    fail "SKILL.md: openclaw.requires.env should not include ${var} (optional)"
+    fail "SKILL.md: openclaw block should not include ${var} (optional)"
   else
-    pass "SKILL.md: openclaw.requires.env correctly omits ${var}"
+    pass "SKILL.md: openclaw block correctly omits ${var}"
   fi
 done
 
@@ -203,14 +205,17 @@ else
   fail "SKILL.md: openclaw.requires.config missing credentials.json path"
 fi
 
-if echo "$FRONTMATTER" | grep -q 'primaryEnv: TIMEZONE'; then
-  pass "SKILL.md: openclaw.primaryEnv is TIMEZONE"
+# Provenance: homepage and repository must be present
+if echo "$FRONTMATTER" | grep -qE '^\s+homepage:'; then
+  pass "SKILL.md: metadata.homepage present"
 else
-  if echo "$FRONTMATTER" | grep -q 'primaryEnv:'; then
-    fail "SKILL.md: openclaw.primaryEnv should be TIMEZONE"
-  else
-    fail "SKILL.md: openclaw.primaryEnv missing"
-  fi
+  fail "SKILL.md: metadata.homepage missing (provenance concern)"
+fi
+
+if echo "$FRONTMATTER" | grep -qE '^\s+repository:'; then
+  pass "SKILL.md: metadata.repository present"
+else
+  fail "SKILL.md: metadata.repository missing (provenance concern)"
 fi
 
 # ---------------------------------------------------------------------------
