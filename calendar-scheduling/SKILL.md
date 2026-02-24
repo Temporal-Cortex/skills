@@ -1,13 +1,13 @@
 ---
 name: calendar-scheduling
 description: |-
-  Calendar scheduling for AI agents. Resolves natural language times, merges availability across Google, Outlook, and CalDAV calendars, detects conflicts, expands recurrence rules (RRULE), and books slots atomically with Two-Phase Commit safety. Use when scheduling meetings, checking availability, resolving datetime expressions, or managing calendar events.
+  Schedule meetings, check availability, and manage calendar events across Google, Outlook, and CalDAV. Resolves natural language times and timezones, finds free slots, detects conflicts, expands recurring events, and books with conflict prevention. Use when finding free time, scheduling appointments, checking who is busy, or converting between timezones.
 license: MIT
 compatibility: |-
   Requires npx (Node.js 18+) or Docker for the MCP server. python3 optional (configure/status scripts). Stores OAuth credentials at ~/.config/temporal-cortex/. Works with Claude Code, Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
 metadata:
   author: billylui
-  version: "0.4.2"
+  version: "0.4.3"
   mcp-server: "@temporal-cortex/cortex-mcp"
   homepage: "https://github.com/billylui/temporal-cortex-skill"
   repository: "https://github.com/billylui/temporal-cortex-skill"

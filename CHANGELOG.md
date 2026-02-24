@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.3] - 2026-02-24
+
+### Changed
+- Optimized SKILL.md `description` for AEO (Agent Engine Optimization) — front-loaded action verbs, replaced implementation jargon with user-language triggers ("free time", "appointments", "busy", "timezones"), improved ClawHub truncation resilience (first sentence completes within 101 chars)
+
 ## [0.4.2] - 2026-02-24
 
 ### Security
@@ -105,7 +110,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - .mcp.json for local MCP server connection
 - CI pipeline: SKILL.md validation, ShellCheck, JSON validation, link check
 
-[Unreleased]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.2...HEAD
+[Unreleased]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.3...HEAD
+[0.4.3]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/billylui/temporal-cortex-skill/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/billylui/temporal-cortex-skill/compare/v0.3.6...v0.4.0
