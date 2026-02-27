@@ -4,7 +4,9 @@
 
 | Version | Supported |
 |---------|-----------|
-| 0.3.x   | Yes       |
+| 0.5.x   | Yes       |
+| 0.4.x   | Yes       |
+| 0.3.x   | No        |
 
 ## Reporting a Vulnerability
 
@@ -19,4 +21,4 @@ We will acknowledge your report within 48 hours and aim to release a fix within 
 
 ## Scope
 
-This policy covers the `calendar-scheduling` Agent Skill distributed via this repository, including SKILL.md, reference documents, scripts, and presets.
+This policy covers all Agent Skills distributed via this repository, including SKILL.md files, reference documents, scripts, and presets.

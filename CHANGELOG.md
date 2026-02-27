@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-02-27
+
+### Added
+- **structure**: Decomposed monolithic `calendar-scheduling` skill into router + 3 focused sub-skills: `temporal-cortex` (router), `temporal-cortex-datetime` (5 Layer 1 tools), `temporal-cortex-calendars` (7 Layers 0–3 tools), `temporal-cortex-booking` (1 Layer 4 tool)
+- **ci**: `validate-structure.sh` — validates multi-skill directory layout, reference documents, and shared infrastructure
+- **ci**: Version consistency check in release workflow — validates all 4 SKILL.md versions match the tag
+
 ### Changed
+- **repo**: Migrated GitHub organization from `billylui/*` to `temporal-cortex/*` — all repository URLs, CHANGELOG comparison links, and cross-repo references updated
 - **setup.sh**: Renamed "Cloud Mode" to "Platform Mode" — `--platform` flag replaces `--cloud` (backward-compatible: `--cloud` still works)
 - **SKILL.md**: Updated "Managed cloud" section to "Temporal Cortex Platform" with Platform capabilities description
 - **BOOKING-SAFETY.md**: Consistent "Platform Mode" capitalization
@@ -146,7 +154,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - .mcp.json for local MCP server connection
 - CI pipeline: SKILL.md validation, ShellCheck, JSON validation, link check
 
-[Unreleased]: https://github.com/temporal-cortex/skills/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/temporal-cortex/skills/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/temporal-cortex/skills/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/temporal-cortex/skills/compare/v0.4.5...v0.5.0
 [0.4.5]: https://github.com/temporal-cortex/skills/compare/v0.4.4...v0.4.5
 [0.4.4]: https://github.com/temporal-cortex/skills/compare/v0.4.3...v0.4.4
