@@ -4,7 +4,7 @@ Thank you for your interest in contributing to the Temporal Cortex Agent Skill.
 
 ## About This Repo
 
-This is a **documentation and configuration** repository. It contains the `calendar-scheduling` Agent Skill — SKILL.md, reference documents, presets, and scripts. The MCP server source code is maintained separately in [temporal-cortex-mcp](https://github.com/billylui/temporal-cortex-mcp).
+This is a **documentation and configuration** repository. It contains the `calendar-scheduling` Agent Skill — SKILL.md, reference documents, presets, and scripts. The MCP server source code is maintained separately in [temporal-cortex-mcp](https://github.com/temporal-cortex/mcp).
 
 ## Getting Started
 
@@ -18,13 +18,13 @@ This is a **documentation and configuration** repository. It contains the `calen
 
 ### Bug Reports
 
-Found a bug in the skill? Search [existing issues](https://github.com/billylui/temporal-cortex-skill/issues) first. If not found, [open a new issue](https://github.com/billylui/temporal-cortex-skill/issues/new?template=bug_report.yml).
+Found a bug in the skill? Search [existing issues](https://github.com/temporal-cortex/skills/issues) first. If not found, [open a new issue](https://github.com/temporal-cortex/skills/issues/new?template=bug_report.yml).
 
-For MCP server bugs, report at [temporal-cortex-mcp](https://github.com/billylui/temporal-cortex-mcp/issues).
+For MCP server bugs, report at [temporal-cortex-mcp](https://github.com/temporal-cortex/mcp/issues).
 
 ### Feature Requests
 
-Have an idea? [Open an issue](https://github.com/billylui/temporal-cortex-skill/issues/new?template=feature_request.yml) describing your use case.
+Have an idea? [Open an issue](https://github.com/temporal-cortex/skills/issues/new?template=feature_request.yml) describing your use case.
 
 ### Skill Improvements
 

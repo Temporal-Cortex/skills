@@ -1,11 +1,11 @@
 # Temporal Cortex Skill
 
-[![CI](https://github.com/billylui/temporal-cortex-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/billylui/temporal-cortex-skill/actions/workflows/ci.yml)
+[![CI](https://github.com/temporal-cortex/skills/actions/workflows/ci.yml/badge.svg)](https://github.com/temporal-cortex/skills/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **v0.5.0** · February 2026 · [Changelog](CHANGELOG.md) · **Website:** [temporal-cortex.com](https://temporal-cortex.com)
 
-The calendar-scheduling Agent Skill teaches AI agents the correct workflow for calendar operations using the [Temporal Cortex MCP server](https://github.com/billylui/temporal-cortex-mcp). It provides procedural knowledge for calendar discovery, temporal orientation, natural language datetime resolution, multi-calendar availability merging, and conflict-free booking with Two-Phase Commit. Compatible with 26+ agent platforms including Claude Code, Codex CLI, and Cursor.
+The calendar-scheduling Agent Skill teaches AI agents the correct workflow for calendar operations using the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp). It provides procedural knowledge for calendar discovery, temporal orientation, natural language datetime resolution, multi-calendar availability merging, and conflict-free booking with Two-Phase Commit. Compatible with 26+ agent platforms including Claude Code, Codex CLI, and Cursor.
 
 ## What does the calendar-scheduling skill do?
 
@@ -19,21 +19,21 @@ This skill gives AI agents procedural knowledge for calendar operations:
 - **RRULE expansion** — deterministic recurrence rule handling (DST, BYSETPOS, leap years)
 - **TOON output** — default format saves ~40% tokens compared to JSON
 
-The skill teaches the 5-step workflow: **discover → orient → resolve → query → act**. Powered by [Temporal Cortex Core](https://github.com/billylui/temporal-cortex-core) (Truth Engine) and the [Temporal Cortex MCP server](https://github.com/billylui/temporal-cortex-mcp).
+The skill teaches the 5-step workflow: **discover → orient → resolve → query → act**. Powered by [Temporal Cortex Core](https://github.com/temporal-cortex/core) (Truth Engine) and the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp).
 
 ## How do I install the calendar-scheduling skill?
 
 **Install in 3 steps:**
 
-1. **Clone the repository** — `git clone https://github.com/billylui/temporal-cortex-skill.git`
+1. **Clone the repository** — `git clone https://github.com/temporal-cortex/skills.git`
 2. **Copy to skills directory** — `cp -r temporal-cortex-skill/calendar-scheduling ~/.claude/skills/` (or your agent's skills location)
-3. **Configure MCP server** — ensure the [MCP server](https://github.com/billylui/temporal-cortex-mcp) is configured and run `npx @temporal-cortex/cortex-mcp auth google` for calendar access.
+3. **Configure MCP server** — ensure the [MCP server](https://github.com/temporal-cortex/mcp) is configured and run `npx @temporal-cortex/cortex-mcp auth google` for calendar access.
 
 ### Claude Code
 
 ```bash
 # Clone into your skills directory
-git clone https://github.com/billylui/temporal-cortex-skill.git
+git clone https://github.com/temporal-cortex/skills.git
 cp -r temporal-cortex-skill/calendar-scheduling ~/.claude/skills/
 ```
 
@@ -49,7 +49,7 @@ Copy the `calendar-scheduling/` directory to your agent's skills location. The `
 
 ## How do I connect the MCP server?
 
-This skill requires the [Temporal Cortex MCP server](https://github.com/billylui/temporal-cortex-mcp). The included `.mcp.json` points to the local npm binary:
+This skill requires the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp). The included `.mcp.json` points to the local npm binary:
 
 ```json
 {
@@ -144,8 +144,8 @@ The skill provides procedural knowledge (what to do and in what order). The Mode
 
 ## Where can I learn more about Temporal Cortex?
 
-- **[temporal-cortex-mcp](https://github.com/billylui/temporal-cortex-mcp)** — MCP server (the tool execution layer)
-- **[temporal-cortex-core](https://github.com/billylui/temporal-cortex-core)** — Truth Engine + TOON (the computation layer)
+- **[temporal-cortex-mcp](https://github.com/temporal-cortex/mcp)** — MCP server (the tool execution layer)
+- **[temporal-cortex-core](https://github.com/temporal-cortex/core)** — Truth Engine + TOON (the computation layer)
 - **[Agent Skills Specification](https://agentskills.io/specification)** — The open standard this skill follows
 
 ## Contributing

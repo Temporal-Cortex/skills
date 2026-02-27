@@ -10,10 +10,10 @@
       "pattern": "^https://tally\\.so"
     },
     {
-      "pattern": "^https://github\\.com/billylui/temporal-cortex-skill/compare/"
+      "pattern": "^https://github\\.com/temporal-cortex/skills/compare/"
     },
     {
-      "pattern": "^https://github\\.com/billylui/temporal-cortex-skill/releases/tag/"
+      "pattern": "^https://github\\.com/temporal-cortex/skills/releases/tag/"
     }
   ],
   "replacementPatterns": [],
