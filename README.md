@@ -109,6 +109,14 @@ Yes. The `temporal-cortex-datetime` skill works immediately with zero configurat
 
 The router skill (`temporal-cortex`) knows the full 5-step workflow and routes to the appropriate sub-skill based on intent. For a full scheduling workflow (resolve time → check availability → book), the agent progresses through datetime → scheduling sub-skills.
 
+## Listings
+
+These skills are published on multiple directories:
+
+- **[ClawHub](https://clawhub.ai)** — All 3 skills published individually (auto-published on release via CI)
+- **[anthropics/skills](https://github.com/anthropics/skills/pull/479)** — Official Anthropic skill directory (PR pending)
+- **[awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills/pull/281)** — Community curated list (PR pending)
+
 ## More
 
 - **[temporal-cortex/mcp](https://github.com/temporal-cortex/mcp)** — MCP server

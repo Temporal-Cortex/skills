@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **listings**: Submitted all 3 skills to [anthropics/skills](https://github.com/anthropics/skills/pull/479) and [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills/pull/281) directories — replaces stale single-skill PRs #451/#242 with multi-skill layout matching the `docx/pdf/pptx/xlsx` precedent
+
 ### Fixed
 - **links**: Replaced 4 broken relative links in router SKILL.md with absolute GitHub URLs — cross-skill (`../temporal-cortex-datetime/SKILL.md`) and repo-level (`../../.mcp.json`, `../../scripts/setup.sh`) references now resolve correctly on ClawHub and other platforms that render skills in isolation
 - **version**: Fixed stale MCP server version in AGENTS.md (`0.5.2` → `0.5.3`)
