@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.8] - 2026-03-01
+
+### Fixed
+- **scanner**: Removed inline Docker mount config from router SKILL.md — OpenClaw scanner flagged `-v ~/.config/temporal-cortex:/root/.config/temporal-cortex` as "exposing credentials to container" (INSTRUCTION SCOPE flag), causing Benign→Suspicious regression. Now references MCP README for Docker setup (matching datetime/scheduling pattern that scored Benign)
+
 ## [0.5.7] - 2026-03-01
 
 ### Security
@@ -211,7 +216,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - .mcp.json for local MCP server connection
 - CI pipeline: SKILL.md validation, ShellCheck, JSON validation, link check
 
-[Unreleased]: https://github.com/temporal-cortex/skills/compare/v0.5.7...HEAD
+[Unreleased]: https://github.com/temporal-cortex/skills/compare/v0.5.8...HEAD
+[0.5.8]: https://github.com/temporal-cortex/skills/compare/v0.5.7...v0.5.8
 [0.5.7]: https://github.com/temporal-cortex/skills/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/temporal-cortex/skills/compare/v0.5.5...v0.5.6
 [0.5.5]: https://github.com/temporal-cortex/skills/compare/v0.5.4...v0.5.5

@@ -7,7 +7,7 @@ compatibility: |-
   Requires npx (Node.js 18+) to download and run the MCP server binary from npm. No OAuth or credentials needed — all 5 tools are pure local computation after server startup. Works with Claude Code, Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
 metadata:
   author: temporal-cortex
-  version: "0.5.7"
+  version: "0.5.8"
   mcp-server: "@temporal-cortex/cortex-mcp"
   homepage: "https://temporal-cortex.com"
   repository: "https://github.com/temporal-cortex/skills"
@@ -33,10 +33,10 @@ metadata:
 
 ## Runtime
 
-These tools run inside the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp) (`@temporal-cortex/cortex-mcp@0.5.7`), a compiled Rust binary distributed as an npm package.
+These tools run inside the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp) (`@temporal-cortex/cortex-mcp@0.5.8`), a compiled Rust binary distributed as an npm package.
 
 **What happens at startup:**
-1. `npx` downloads `@temporal-cortex/cortex-mcp@0.5.7` from the npm registry (one-time, cached locally)
+1. `npx` downloads `@temporal-cortex/cortex-mcp@0.5.8` from the npm registry (one-time, cached locally)
 2. The MCP server starts as a local process communicating over stdio
 3. All 5 datetime tools execute as pure local computation — no external API calls after startup
 
@@ -49,7 +49,7 @@ These tools run inside the [Temporal Cortex MCP server](https://github.com/tempo
 **Verification:** SHA256 checksums are published with each [GitHub Release](https://github.com/temporal-cortex/mcp/releases) (`SHA256SUMS.txt`) and embedded in the npm package for automatic postinstall verification. Verify manually:
 
 ```bash
-curl -sL https://github.com/temporal-cortex/mcp/releases/download/mcp-v0.5.7/SHA256SUMS.txt
+curl -sL https://github.com/temporal-cortex/mcp/releases/download/mcp-v0.5.8/SHA256SUMS.txt
 ```
 
 Source: [github.com/temporal-cortex/mcp](https://github.com/temporal-cortex/mcp) (MIT-licensed). Binaries are built in [GitHub Actions](https://github.com/temporal-cortex/mcp/actions) from auditable Rust source.
