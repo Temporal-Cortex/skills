@@ -198,6 +198,12 @@ for skill_dir in skills/*/; do
   else
     fail "${SKILL_NAME}: missing SHA256SUMS.txt reference"
   fi
+
+  if grep -q 'Pre-run verification' "$SKILL_FILE" 2>/dev/null; then
+    pass "${SKILL_NAME}: pre-run verification steps documented"
+  else
+    fail "${SKILL_NAME}: missing pre-run verification steps"
+  fi
 done
 
 # ---------------------------------------------------------------------------
@@ -326,6 +332,39 @@ for skill_dir in skills/*/; do
     fail "${SKILL_NAME}: openclaw.requires.anyBins should not exist (python3 and docker are optional, not required)"
   else
     pass "${SKILL_NAME}: no anyBins declared"
+  fi
+done
+
+# ---------------------------------------------------------------------------
+# 8. OpenClaw install spec — all skills must declare install mechanism
+# ---------------------------------------------------------------------------
+echo ""
+echo "--- OpenClaw Install Spec ---"
+
+for skill_dir in skills/*/; do
+  SKILL_FILE="${skill_dir}SKILL.md"
+  if [[ ! -f "$SKILL_FILE" ]]; then
+    continue
+  fi
+  SKILL_NAME=$(basename "$skill_dir")
+  FM=$(sed -n '/^---$/,/^---$/p' "$SKILL_FILE" | sed '1d;$d')
+
+  if echo "$FM" | grep -q 'install:'; then
+    pass "${SKILL_NAME}: openclaw.install block present"
+  else
+    fail "${SKILL_NAME}: openclaw.install block missing"
+  fi
+
+  if echo "$FM" | grep -q 'kind: node'; then
+    pass "${SKILL_NAME}: openclaw.install uses kind: node"
+  else
+    fail "${SKILL_NAME}: openclaw.install missing kind: node"
+  fi
+
+  if echo "$FM" | grep -q '@temporal-cortex/cortex-mcp@[0-9]'; then
+    pass "${SKILL_NAME}: openclaw.install package version pinned"
+  else
+    fail "${SKILL_NAME}: openclaw.install package version not pinned"
   fi
 done
 

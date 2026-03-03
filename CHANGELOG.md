@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-03-03
+
+### Security
+- **scanner**: Added `openclaw.install` block (`kind: node`) to all 3 SKILL.md frontmatters — declares the npm install mechanism as a static install spec, addressing OpenClaw "no install spec" finding
+- **scanner**: Restructured verification pipeline in all 3 SKILL.md files — independent GitHub Release checksum verification is now step 1; postinstall SHA256 check labeled "defense-in-depth" (breaks circular trust finding)
+- **scanner**: Added pre-run verification section to all 3 SKILL.md files — `npm pack --dry-run`, independent checksum comparison, and Docker containment steps before first execution
+- **scanner**: Renamed "What happens at startup" to "Install and startup lifecycle" with explicit binary source (GitHub Release) and failure behavior documentation
+- **scanner**: Promoted Docker containment for datetime skill with `--network=none` flag — enforces zero-network guarantee at OS level for pure-computation tools
+
+### Changed
+- **datetime**: Updated description and compatibility to separate install-time from runtime behavior — "run fully offline after one-time binary install" instead of "pure local computation"
+- **router**: Updated compatibility to use explicit install framing — "to install the MCP server binary"
+
+### Added
+- **ci**: Added install spec validation (section 8) to `test-security.sh` — verifies all SKILL.md files declare `openclaw.install` with `kind: node` and pinned version
+- **ci**: Added pre-run verification check to `test-security.sh` section 5 — ensures all SKILL.md files document pre-run verification steps
+
 ## [0.5.9] - 2026-03-03
 
 ### Security
@@ -228,7 +245,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - .mcp.json for local MCP server connection
 - CI pipeline: SKILL.md validation, ShellCheck, JSON validation, link check
 
-[Unreleased]: https://github.com/temporal-cortex/skills/compare/v0.5.8...HEAD
+[Unreleased]: https://github.com/temporal-cortex/skills/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/temporal-cortex/skills/compare/v0.5.9...v0.6.0
+[0.5.9]: https://github.com/temporal-cortex/skills/compare/v0.5.8...v0.5.9
 [0.5.8]: https://github.com/temporal-cortex/skills/compare/v0.5.7...v0.5.8
 [0.5.7]: https://github.com/temporal-cortex/skills/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/temporal-cortex/skills/compare/v0.5.5...v0.5.6

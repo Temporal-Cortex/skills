@@ -7,11 +7,15 @@ compatibility: |-
   Requires npx (Node.js 18+) or Docker for the MCP server. Stores OAuth credentials at ~/.config/temporal-cortex/. Works with Claude Code, Claude Desktop, Cursor, Windsurf, and any MCP-compatible client.
 metadata:
   author: temporal-cortex
-  version: "0.5.9"
+  version: "0.6.0"
   mcp-server: "@temporal-cortex/cortex-mcp"
   homepage: "https://temporal-cortex.com"
   repository: "https://github.com/temporal-cortex/skills"
   openclaw:
+    install:
+      - kind: node
+        package: "@temporal-cortex/cortex-mcp@0.6.0"
+        bins: [cortex-mcp]
     requires:
       bins:
         - npx
@@ -26,12 +30,12 @@ metadata:
 
 ## Runtime
 
-These tools run inside the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp) (`@temporal-cortex/cortex-mcp@0.5.9`), a compiled Rust binary distributed as an npm package.
+These tools run inside the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp) (`@temporal-cortex/cortex-mcp@0.6.0`), a compiled Rust binary distributed as an npm package.
 
-**What happens at startup (npx):**
-1. `npx` downloads `@temporal-cortex/cortex-mcp@0.5.9` from the npm registry (one-time, cached locally)
-2. The postinstall script verifies the binary's SHA256 checksum against the embedded `checksums.json` — **fails on mismatch**
-3. The MCP server starts as a local process communicating over stdio
+**Install and startup lifecycle:**
+1. `npx` resolves `@temporal-cortex/cortex-mcp@0.6.0` from the npm registry (one-time, cached locally after first download)
+2. The postinstall script downloads the platform-specific binary from the [GitHub Release](https://github.com/temporal-cortex/mcp/releases/tag/mcp-v0.6.0) and verifies its SHA256 checksum against the embedded `checksums.json` — **installation halts on mismatch**
+3. The MCP server starts as a local process communicating over stdio (no listening ports)
 4. Calendar tools make authenticated API calls to your configured providers (Google Calendar API, Microsoft Graph API, CalDAV endpoints)
 
 **Credential storage:** OAuth tokens are stored locally at `~/.config/temporal-cortex/credentials.json` and read exclusively by the local MCP server process. No credential data is transmitted to Temporal Cortex servers. The binary's filesystem access is limited to `~/.config/temporal-cortex/` — verifiable by inspecting the [open-source Rust code](https://github.com/temporal-cortex/mcp) or running under Docker where the mount is the only writable path.
@@ -40,13 +44,24 @@ These tools run inside the [Temporal Cortex MCP server](https://github.com/tempo
 
 **Network scope:** Calendar tools connect only to your configured providers (`googleapis.com`, `graph.microsoft.com`, or your CalDAV server). No callbacks to Temporal Cortex servers. Telemetry is off by default.
 
-**Verification pipeline:** The npm package embeds `checksums.json` containing SHA256 hashes for all platform binaries. During `npm install`, the postinstall script downloads the platform-specific binary and compares its SHA256 hash against the expected checksum. **On mismatch, installation fails with an error** — the binary is not installed. Checksums are also published with each [GitHub Release](https://github.com/temporal-cortex/mcp/releases) (`SHA256SUMS.txt`) for independent verification:
+**Pre-run verification** (recommended before first use):
+1. Inspect the npm package without executing: `npm pack @temporal-cortex/cortex-mcp@0.6.0 --dry-run`
+2. Verify checksums independently against the [GitHub Release](https://github.com/temporal-cortex/mcp/releases/download/mcp-v0.6.0/SHA256SUMS.txt) (see verification pipeline below)
+3. For full containment, run in Docker instead of npx (see Docker containment below)
+
+**Verification pipeline:** Checksums are published independently at each [GitHub Release](https://github.com/temporal-cortex/mcp/releases/tag/mcp-v0.6.0) as `SHA256SUMS.txt` — verify the binary before first use:
 
 ```bash
-curl -sL https://github.com/temporal-cortex/mcp/releases/download/mcp-v0.5.9/SHA256SUMS.txt
+# 1. Fetch checksums from GitHub (independent of the npm package)
+curl -sL https://github.com/temporal-cortex/mcp/releases/download/mcp-v0.6.0/SHA256SUMS.txt
+
+# 2. Compare against the npm-installed binary
+shasum -a 256 "$(npm root -g)/@temporal-cortex/cortex-mcp/bin/cortex-mcp"
 ```
 
-**Build provenance:** Binaries are cross-compiled from auditable Rust source in [GitHub Actions](https://github.com/temporal-cortex/mcp/actions) across 5 platforms (darwin-arm64, darwin-x64, linux-x64, linux-arm64, win32-x64). Source: [github.com/temporal-cortex/mcp](https://github.com/temporal-cortex/mcp) (MIT-licensed).
+As defense-in-depth, the npm package also embeds `checksums.json` and the postinstall script compares SHA256 hashes during install — **installation halts on mismatch** (the binary is deleted, not executed). This automated check supplements, but does not replace, independent verification above.
+
+**Build provenance:** Binaries are cross-compiled from auditable Rust source in [GitHub Actions](https://github.com/temporal-cortex/mcp/actions) across 5 platforms (darwin-arm64, darwin-x64, linux-x64, linux-arm64, win32-x64). Source: [github.com/temporal-cortex/mcp](https://github.com/temporal-cortex/mcp) (MIT-licensed). The CI workflow, build artifacts, and release checksums are all publicly inspectable.
 
 **Docker containment** (no Node.js on host, credential isolation via volume mount):
 
@@ -204,7 +219,7 @@ All calendar IDs use provider-prefixed format:
 
 | Error | Action |
 |-------|--------|
-| "No credentials found" | Run: `npx @temporal-cortex/cortex-mcp@0.5.9 auth google` (or `outlook` / `caldav`). |
+| "No credentials found" | Run: `npx @temporal-cortex/cortex-mcp@0.6.0 auth google` (or `outlook` / `caldav`). |
 | "Timezone not configured" | Prompt for IANA timezone. Or run the auth command which configures timezone. |
 | Slot is busy / conflict detected | Use `find_free_slots` to suggest alternatives. Present options to user. |
 | Lock acquisition failed | Another agent is booking the same slot. Wait briefly and retry, or suggest alternative times. |
