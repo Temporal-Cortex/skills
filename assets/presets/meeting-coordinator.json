@@ -1,0 +1,20 @@
+{
+  "name": "Meeting Coordinator",
+  "description": "Multi-agent scheduling coordinator with Open Scheduling support. Resolves identities, queries availability across timezones, suggests optimal meeting times, and handles booking conflicts gracefully.",
+  "hints": [
+    "Always resolve_identity before query_public_availability — never assume a slug",
+    "Suggest 3 time slot options, not just 1 — let the user choose",
+    "Include timezone context in every suggestion (e.g., '2pm ET / 11am PT')",
+    "If a 409 Conflict occurs during request_booking, re-query availability and suggest alternative slots immediately",
+    "Use get_temporal_context first to orient on current time and DST status",
+    "When scheduling across timezones, call convert_timezone to show both local times",
+    "For internal meetings, use get_availability + book_slot. For external meetings, use resolve_identity + query_public_availability + request_booking",
+    "Always check_availability before book_slot — never skip the conflict check"
+  ],
+  "tools": {
+    "always_call_first": ["get_temporal_context"],
+    "internal_booking": ["list_calendars", "get_availability", "check_availability", "book_slot"],
+    "external_booking": ["resolve_identity", "query_public_availability", "request_booking"],
+    "helpers": ["resolve_datetime", "convert_timezone", "compute_duration"]
+  }
+}

@@ -3,7 +3,7 @@
 [![CI](https://github.com/temporal-cortex/skills/actions/workflows/ci.yml/badge.svg)](https://github.com/temporal-cortex/skills/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**v0.7.4** · March 2026 · [Changelog](CHANGELOG.md) · **Website:** [temporal-cortex.com](https://temporal-cortex.com)
+**v0.7.5** · March 2026 · [Changelog](CHANGELOG.md) · **Website:** [temporal-cortex.com](https://temporal-cortex.com)
 
 Agent Skills for AI calendar scheduling using the [Temporal Cortex MCP server](https://github.com/temporal-cortex/mcp). Teaches AI agents the correct workflow for calendar discovery, temporal orientation, datetime resolution, multi-calendar availability merging, and conflict-free booking. Compatible with 26+ agent platforms.
 
@@ -11,9 +11,9 @@ Agent Skills for AI calendar scheduling using the [Temporal Cortex MCP server](h
 
 | Skill | Description | Tools |
 |-------|-------------|-------|
-| [temporal-cortex](skills/temporal-cortex/SKILL.md) | Router — routes calendar intents to sub-skills | All 12 |
+| [temporal-cortex](skills/temporal-cortex/SKILL.md) | Router — routes calendar intents to sub-skills | All 15 |
 | [temporal-cortex-datetime](skills/temporal-cortex-datetime/SKILL.md) | Time resolution, timezone conversion, duration math (no credentials needed) | 5 |
-| [temporal-cortex-scheduling](skills/temporal-cortex-scheduling/SKILL.md) | Calendar discovery, events, free slots, availability, RRULE, and atomic booking | 8 |
+| [temporal-cortex-scheduling](skills/temporal-cortex-scheduling/SKILL.md) | Calendar discovery, events, free slots, availability, RRULE, booking, and Open Scheduling | 11 |
 
 ## Installation
 
@@ -66,6 +66,7 @@ skills/
         ├── BOOKING-SAFETY.md
         ├── CALENDAR-TOOLS.md
         ├── MULTI-CALENDAR.md
+        ├── OPEN-SCHEDULING.md
         ├── RRULE-GUIDE.md
         └── TEMPORAL-LINKS.md
 scripts/                              # Shared automation
@@ -73,6 +74,7 @@ scripts/                              # Shared automation
 ├── configure.sh                      # Timezone + week start
 └── status.sh                         # Connection health check
 assets/presets/                       # Workflow presets
+├── meeting-coordinator.json
 ├── personal-assistant.json
 ├── recruiter-agent.json
 └── team-coordinator.json
@@ -82,16 +84,17 @@ assets/presets/                       # Workflow presets
 
 | Layer | Tools | Skill |
 |-------|-------|-------|
-| 4. Booking | `book_slot` | scheduling |
-| 3. Availability | `get_availability` | scheduling |
+| 4. Booking | `book_slot`, `request_booking` | scheduling |
+| 3. Availability | `get_availability`, `query_public_availability` | scheduling |
 | 2. Calendar Ops | `list_events`, `find_free_slots`, `expand_rrule`, `check_availability` | scheduling |
 | 1. Temporal Context | `get_temporal_context`, `resolve_datetime`, `convert_timezone`, `compute_duration`, `adjust_timestamp` | datetime |
-| 0. Discovery | `list_calendars` | scheduling |
+| 0. Discovery | `list_calendars`, `resolve_identity` | scheduling |
 
 ## Presets
 
 | Preset | Use Case | Default Slot |
 |--------|----------|-------------|
+| Meeting Coordinator | Cross-user scheduling with Open Scheduling | 30 min |
 | Personal Assistant | General scheduling | 30 min |
 | Recruiter Agent | Interview coordination | 60 min |
 | Team Coordinator | Group meetings | 30 min |

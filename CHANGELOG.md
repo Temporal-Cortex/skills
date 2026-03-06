@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.5] - 2026-03-06
 
+### Added
+- **scheduling**: 3 new Open Scheduling tools — `resolve_identity` (Layer 0), `query_public_availability` (Layer 3), `request_booking` (Layer 4)
+- **scheduling**: `OPEN-SCHEDULING.md` reference document — identity resolution, public availability, external booking via MCP
+- **preset**: `meeting-coordinator.json` — multi-agent scheduling with Open Scheduling hints
+- **scheduling**: Open Scheduling Workflow section in SKILL.md (resolve → query → book)
+- **scheduling**: Tool annotations section for `request_booking`
+
+### Changed
+- **router**: Tool count updated from 12 → 15 (5 layers); routing table expanded with 3 new intent patterns
+- **scheduling**: Tool count updated from 8 → 11; added Layer 0 (Discovery) and expanded Layers 3-4
+- **all skills**: Version bumped to 0.7.5 (frontmatter + npm package pins + GitHub Release URLs)
+- **README**: Updated tool counts, added `meeting-coordinator.json` preset, added `OPEN-SCHEDULING.md` to structure
+- **AGENTS.md**: Updated tool counts and descriptions
+
 ### Fixed
 - **router**: Corrected layer count from "5 Layers (0–4)" to canonical "4 Layers (1–4)" — `list_calendars` belongs in Layer 2 (Calendar Operations), not a separate Layer 0
 - **scheduling**: Merged "Layer 0 — Discovery" section into "Layer 2 — Calendar Operations" to match canonical architecture
