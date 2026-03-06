@@ -27,7 +27,7 @@ jobs:
         run: bash scripts/generate-alias.sh
 
       - name: Verify alias is up-to-date
-        run: git diff --exit-code skills/calendar-scheduling/SKILL.md
+        run: git diff --exit-code skills/calendar-scheduling/
 
       - name: Validate all SKILL.md files
         run: bash tests/validate-skill.sh

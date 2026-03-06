@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# generate-alias.sh — Generates skills/calendar-scheduling/SKILL.md from the
-# router skill (skills/temporal-cortex/SKILL.md).
+# generate-alias.sh — Generates skills/calendar-scheduling/ (SKILL.md +
+# references/) from the router skill (skills/temporal-cortex/).
 #
 # The calendar-scheduling slug is a backward-compatible alias kept for users
 # who installed the original monolithic skill before the v0.5.1 restructuring.
@@ -19,6 +19,16 @@ if [[ ! -f "$SOURCE" ]]; then
 fi
 
 mkdir -p "$TARGET_DIR"
+
+# Copy reference docs from router so clawhub publish includes them.
+# These are identical copies — the alias is a backward-compat mirror.
+REFS_SOURCE="${REPO_ROOT}/skills/temporal-cortex/references"
+REFS_TARGET="${TARGET_DIR}/references"
+if [[ -d "$REFS_SOURCE" ]]; then
+  rm -rf "$REFS_TARGET"
+  cp -R "$REFS_SOURCE" "$REFS_TARGET"
+  echo "Copied: ${REFS_SOURCE} → ${REFS_TARGET}"
+fi
 
 # Build the alias SKILL.md:
 #   1. Prepend a DO-NOT-EDIT comment
@@ -57,12 +67,6 @@ mkdir -p "$TARGET_DIR"
       print ""
       print "> **Renamed:** This skill was previously published as `calendar-scheduling`. It is now maintained as [`temporal-cortex`](https://github.com/temporal-cortex/skills/blob/main/skills/temporal-cortex/SKILL.md). Both slugs install the same MCP server and provide identical functionality."
       next
-    }
-
-    # Convert relative reference links to absolute GitHub URLs
-    # (the alias directory has no references/ subdirectory)
-    /^\- \[.*\]\(references\// {
-      gsub(/\(references\//, "(https://github.com/temporal-cortex/skills/blob/main/skills/temporal-cortex/references/")
     }
 
     { print }

@@ -139,4 +139,4 @@ Layer 1 tools work immediately with zero configuration. Calendar tools require a
 
 ## Additional References
 
-- [Security Model](https://github.com/temporal-cortex/skills/blob/main/skills/temporal-cortex/references/SECURITY-MODEL.md) — Content sanitization, filesystem containment, network scope, tool annotations
+- [Security Model](references/SECURITY-MODEL.md) — Content sanitization, filesystem containment, network scope, tool annotations

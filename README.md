@@ -71,7 +71,9 @@ skills/
 │       ├── RRULE-GUIDE.md
 │       └── TEMPORAL-LINKS.md
 └── calendar-scheduling/              # Legacy alias (auto-generated, do not edit)
-    └── SKILL.md
+    ├── SKILL.md
+    └── references/
+        └── SECURITY-MODEL.md
 scripts/                              # Shared automation
 ├── setup.sh                          # OAuth + calendar connection
 ├── configure.sh                      # Timezone + week start
