@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **agents**: Enhanced `AGENTS.md` with development section — CI jobs, conventions, shell injection prevention, legacy alias workflow, boundaries
+
+### Fixed
+- **ci**: Add `npmjs.com` to link-check ignore list — npm returns HTTP 403 to bot crawlers, causing false CI failures
+- **ci**: Pin `action-shellcheck` from `@master` to `@2.0.0` for reproducible builds
+
 ## [0.7.8] - 2026-03-06
 
 ### Fixed

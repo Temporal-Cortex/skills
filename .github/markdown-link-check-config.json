@@ -17,6 +17,9 @@
     },
     {
       "pattern": "^https://github\\.com/temporal-cortex/platform"
+    },
+    {
+      "pattern": "^https://www\\.npmjs\\.com/package/"
     }
   ],
   "replacementPatterns": [],
