@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **alias**: `calendar-scheduling` legacy skill published as backward-compatible alias for the `temporal-cortex` router — auto-generated from router SKILL.md via `scripts/generate-alias.sh`
+- **ci**: Alias freshness check in `ci.yml` and `release.yml` — regenerates and diffs to catch stale commits
+- **ci**: `calendar-scheduling` added to `publish-clawhub.yml` matrix (4 skills published on release)
+
 ## [0.7.5] - 2026-03-06
 
 ### Added

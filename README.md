@@ -14,6 +14,7 @@ Agent Skills for AI calendar scheduling using the [Temporal Cortex MCP server](h
 | [temporal-cortex](skills/temporal-cortex/SKILL.md) | Router — routes calendar intents to sub-skills | All 15 |
 | [temporal-cortex-datetime](skills/temporal-cortex-datetime/SKILL.md) | Time resolution, timezone conversion, duration math (no credentials needed) | 5 |
 | [temporal-cortex-scheduling](skills/temporal-cortex-scheduling/SKILL.md) | Calendar discovery, events, free slots, availability, RRULE, booking, and Open Scheduling | 11 |
+| [calendar-scheduling](skills/calendar-scheduling/SKILL.md) | Legacy alias for temporal-cortex (auto-generated) | All 15 |
 
 ## Installation
 
@@ -60,15 +61,17 @@ skills/
 ├── temporal-cortex-datetime/         # Time & timezone tools (no credentials needed)
 │   ├── SKILL.md
 │   └── references/DATETIME-TOOLS.md
-└── temporal-cortex-scheduling/       # Calendar ops + booking (needs OAuth)
-    ├── SKILL.md
-    └── references/
-        ├── BOOKING-SAFETY.md
-        ├── CALENDAR-TOOLS.md
-        ├── MULTI-CALENDAR.md
-        ├── OPEN-SCHEDULING.md
-        ├── RRULE-GUIDE.md
-        └── TEMPORAL-LINKS.md
+├── temporal-cortex-scheduling/       # Calendar ops + booking (needs OAuth)
+│   ├── SKILL.md
+│   └── references/
+│       ├── BOOKING-SAFETY.md
+│       ├── CALENDAR-TOOLS.md
+│       ├── MULTI-CALENDAR.md
+│       ├── OPEN-SCHEDULING.md
+│       ├── RRULE-GUIDE.md
+│       └── TEMPORAL-LINKS.md
+└── calendar-scheduling/              # Legacy alias (auto-generated, do not edit)
+    └── SKILL.md
 scripts/                              # Shared automation
 ├── setup.sh                          # OAuth + calendar connection
 ├── configure.sh                      # Timezone + week start
@@ -109,6 +112,10 @@ The skills follow the [Agent Skills specification](https://agentskills.io/specif
 
 Yes. The `temporal-cortex-datetime` skill works immediately with zero configuration — all 5 tools are pure computation with no external API calls.
 
+### What happened to `calendar-scheduling`?
+
+The original `calendar-scheduling` skill was renamed to `temporal-cortex` at v0.5.1 when it was decomposed into a router + 2 focused sub-skills. The `calendar-scheduling` slug is still published on all directories as a backward-compatible alias — it is auto-generated from the router SKILL.md and installs the same MCP server.
+
 ### How do the router and sub-skills interact?
 
 The router skill (`temporal-cortex`) knows the full 5-step workflow and routes to the appropriate sub-skill based on intent. For a full scheduling workflow (resolve time → check availability → book), the agent progresses through datetime → scheduling sub-skills.
@@ -117,7 +124,7 @@ The router skill (`temporal-cortex`) knows the full 5-step workflow and routes t
 
 These skills are published on multiple directories:
 
-- **[ClawHub](https://clawhub.ai)** — All 3 skills published individually (auto-published on release via CI)
+- **[ClawHub](https://clawhub.ai)** — All 3 skills + legacy `calendar-scheduling` alias published individually (auto-published on release via CI)
 - **[anthropics/skills](https://github.com/anthropics/skills/pull/479)** — Official Anthropic skill directory (PR pending)
 - **[awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills/pull/281)** — Community curated list (PR pending)
 

@@ -27,6 +27,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Regenerate calendar-scheduling alias
+        run: bash scripts/generate-alias.sh
+
+      - name: Verify alias is up-to-date
+        run: git diff --exit-code skills/calendar-scheduling/SKILL.md
+
       - name: Validate all SKILL.md files
         run: bash tests/validate-skill.sh
 
