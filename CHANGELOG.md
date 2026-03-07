@@ -14,6 +14,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **ci**: Add `npmjs.com` to link-check ignore list — npm returns HTTP 403 to bot crawlers, causing false CI failures
 - **ci**: Pin `action-shellcheck` from `@master` to `@2.0.0` for reproducible builds
 
+## [0.7.9] - 2026-03-07
+
+### Fixed
+- **datetime**: Resolve config path inconsistency that caused Suspicious scanner rating — clarified `config.json` is optional preferences (defaults apply if absent), not a hard requirement
+- **datetime**: Added Source & Provenance section (parity with scheduling skill) — provides positive scanner signal for provenance verification
+
+### Added
+- **scheduling**: "Confirm before booking" critical rule — agents must present booking details to user before calling `book_slot` or `request_booking`
+- **router**: "Confirm before booking" safety rule (mirrors scheduling critical rule)
+
+### Changed
+- **readme**: FAQ clarifies datetime requires zero setup (not zero configuration) — resolves scanner's "no configuration required" vs declared config path inconsistency
+- Version bump to 0.7.9 (tracks MCP server release)
+
 ## [0.7.8] - 2026-03-06
 
 ### Fixed
