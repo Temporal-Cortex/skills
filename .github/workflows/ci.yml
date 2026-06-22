@@ -21,7 +21,7 @@ jobs:
     name: Validate Skills
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Regenerate calendar-scheduling alias
         run: bash scripts/generate-alias.sh
@@ -39,7 +39,7 @@ jobs:
     name: Security Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Run security tests
         run: bash tests/test-security.sh
@@ -48,7 +48,7 @@ jobs:
     name: Lint Scripts
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: ShellCheck
         uses: ludeeus/action-shellcheck@2.0.0
@@ -59,7 +59,7 @@ jobs:
     name: Validate JSON
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Validate preset JSON files
         run: |
@@ -78,7 +78,7 @@ jobs:
     # check), and repository_dispatch (triggered by Platform after release).
     if: github.event_name != 'push'
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
