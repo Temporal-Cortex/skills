@@ -30,7 +30,7 @@ jobs:
           - temporal-cortex-scheduling
           - calendar-scheduling    # legacy alias (generated from temporal-cortex)
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Generate calendar-scheduling alias
         if: matrix.skill == 'calendar-scheduling'
